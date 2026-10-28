@@ -31,4 +31,49 @@ $("#search").addEventListener("input",render);$("#clearCat").onclick=()=>{cat="�
 $("#add").onclick=()=>$("#modal").classList.add("open");$("#cancel").onclick=()=>$("#modal").classList.remove("open");$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")$("#modal").classList.remove("open")});
 $("#bookForm").addEventListener("submit",e=>{e.preventDefault();let palettes=["linear-gradient(145deg,#e6a5c2,#9e5c82)","linear-gradient(145deg,#b6a2dc,#775e9e)","linear-gradient(145deg,#f0b4ba,#c16b8b)","linear-gradient(145deg,#9cb8d9,#647da8)"];custom.push({id:"c"+Date.now(),title:$("#title").value.trim(),author:$("#author").value.trim()||"စာရေးသူ",category:$("#category").value,summary:$("#summary").value.trim(),color:palettes[custom.length%4],symbol:["✿","♡","☾","✧"][custom.length%4],chapters:[{title:$("#chapterTitle").value.trim()||"အခန်း (၁)",text:$("#chapterText").value.trim()||"စာသားမထည့်ရသေးပါ။"}]});save("pp_custom",custom);books=[...seed,...custom];e.target.reset();$("#modal").classList.remove("open");render();nav("updates")});
 render();
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL = "https://tlgaidojlqneuzakslps.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_Xk-pi5EYsncuC9QX9znL2Q_HxnhYwcp";
+
+const supabaseClient = window.supabase.createClient(
+
+  SUPABASE_URL,
+
+  SUPABASE_KEY
+
+);
+
+async function testConnection() {
+
+  const { data, error } = await supabaseClient
+
+    .from("Sunflower nikii")
+
+    .select("*");
+
+  if (error) {
+
+    console.error("Supabase error:", error.message);
+
+    alert("ချိတ်ဆက်မှု မအောင်မြင်ပါ။ Table name နဲ့ Policy ကို စစ်ပါ။");
+
+    return;
+
+  }
+
+  console.log("Supabase ချိတ်ဆက်မှု အောင်မြင်ပါတယ်။", data);
+
+  alert("Supabase ချိတ်ဆက်မှု အောင်မြင်ပါတယ်။");
+
+}
+
+testConnection();
+
+</script>
+
 </script></body></html>
