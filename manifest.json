@@ -1,0 +1,10 @@
+{
+  "name": "Sunflower Niki Novel Library",
+  "short_name": "Sunflower Niki",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff7fb",
+  "theme_color": "#f7c5dc",
+  "description": "Sunflower Niki ဝတ္ထုစာကြည့်တိုက်"
+}
